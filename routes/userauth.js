@@ -82,15 +82,4 @@ router.post('/login', [
     }
 });
 
-
-router.post('/getuser', fetchUser, async (req, res) => {
-    try {
-      const userId = req.user._id;
-      const user = await User.findById(userId).select("-password");
-      res.send(user);
-    }catch (err) {
-      console.error(err.message);
-      res.status(500).send('Internal Server Error');
-    }
-});
 module.exports = router;
